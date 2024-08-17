@@ -1,0 +1,56 @@
+@page
+@model Cadastro.Pages_Clientes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Clientes</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-success">Adicionar Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente[0].Logotipo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Cliente) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                    @if (item.Logotipo != null && item.Logotipo.Length > 0)
+                    {
+                        <span>Sim</span>
+                    }
+                    else
+                    {
+                        <span>Não</span>
+                    }
+            </td>
+
+            <td>                
+                <a asp-page="./Details" class="btn btn-primary" asp-route-id="@item.Id">Detalhes</a>
+                <a asp-page="./Edit" class="btn btn-warning" asp-route-id="@item.Id">Alterar</a>
+                <a asp-page="./Delete" class="btn btn-danger" asp-route-id="@item.Id">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
