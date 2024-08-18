@@ -19,21 +19,21 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 // Configurações de identificação
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+    
 builder.Services.AddRazorPages();
 
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    // Configura o cookie para redirecionar para a página de login quando não estiver autenticado
-    options.LoginPath = "/Identity/Account/Login";
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-    options.LogoutPath = "/Identity/Account/Logout";
-});
 
-// Configuração do JWT
 /*builder.Services.AddAuthentication(options =>
 {
+    // Defina o esquema de autenticação padrão para cookies
+    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+
+    // Padrão para Token
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
+
 })
 .AddCookie(options =>
 {
@@ -41,7 +41,6 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.LogoutPath = "/Identity/Account/Logout";
 })
-
 .AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -54,7 +53,7 @@ builder.Services.ConfigureApplicationCookie(options =>
         ValidAudience = builder.Configuration["Jwt:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
-});  */
+});*/
 
 // Configuração do Swagger
 builder.Services.AddSwaggerGen(c =>
@@ -102,19 +101,19 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseExceptionHandler("/Error");
-    app.UseHsts();
+    app.UseExceptionHandler("/Error"); // Tratamento de exceções em produção
+    app.UseHsts(); // Adiciona cabeçalhos de segurança para HTTPS
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseHttpsRedirection(); // Redireciona HTTP para HTTPS
+app.UseStaticFiles(); // Serve arquivos estáticos
 
-app.UseRouting();
+app.UseRouting(); // Configura o roteamento de requisições
 
 app.UseAuthentication(); // Habilita a autenticação
-app.UseAuthorization();
+app.UseAuthorization(); // Habilita a autorização
 
-app.MapRazorPages();
-app.MapControllers();
+app.MapControllers(); // Mapeia os controladores de API
+app.MapRazorPages(); // Mapeia as Razor Pages
 
-app.Run();
+app.Run(); // Executa a aplicação

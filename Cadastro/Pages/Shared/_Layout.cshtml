@@ -26,6 +26,8 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Página inicial</a>
                         </li>
+
+                        <!-- >Condição de Login para acesso aos menus -->
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
@@ -35,6 +37,8 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Enderecos/Index">Endereços</a>
                             </li>
                         }
+                        <!-- Fim da condição -->
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacidade</a>
                         </li>

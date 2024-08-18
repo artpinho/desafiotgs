@@ -21,6 +21,7 @@ namespace Cadastro.Controllers
             _context = context;
         }
 
+        // Buscar Cliente por Id
         [HttpGet("{id}")]
         public async Task<ActionResult<Cliente>> GetCliente(int id)
         {
@@ -34,7 +35,9 @@ namespace Cadastro.Controllers
             return cliente;
         }
 
+        //Buscar todos os clientes
         [HttpGet]
+
         public async Task<ActionResult<IEnumerable<ClienteViewModel>>> GetClientes()
         {
             var clientes = await _context.Clientes.ToListAsync();
@@ -54,61 +57,66 @@ namespace Cadastro.Controllers
 
             return Ok(clienteViewModels);
         }
-        /*[HttpPost]
-        public async Task<ActionResult<ClienteViewModel>> PostCliente(Cliente cliente)
-        {
-            _context.Clientes.Add(cliente);
-            await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetCliente), new { id = cliente.Id }, cliente);
-        }*/
+    // Inserir cliente
     [HttpPost]
         public async Task<ActionResult<ClienteViewModel>> PostCliente([FromBody] ClienteViewModel model)
     {
-    // Verifica se o modelo recebido é válido
+    
     if (!ModelState.IsValid)
     {
         return BadRequest(ModelState);
     }
 
-    // Mapeia o CadastroViewModel para o modelo de domínio Cliente
+    
     var cliente = new Cliente
         {
             Name = model.Name,
             Email = model.Email,
-            Logotipo = model.Logotipo
-            // Adicione outros campos conforme necessário
+            Logotipo = model.Logotipo ?? null
+            
         };
 
-        // Adiciona o cliente ao contexto e salva as alterações
+        
         _context.Clientes.Add(cliente);
         await _context.SaveChangesAsync();
 
-        // Mapeia o Cliente para ClienteViewModel para retornar
+        
         var clienteViewModel = new ClienteViewModel
         {
             Id = cliente.Id,
             Name = cliente.Name,
             Email = cliente.Email,
             Logotipo = cliente.Logotipo
-            // Adicione outros campos conforme necessário
+            
         };
 
-        // Retorna a resposta de criação com o ClienteViewModel
+        
         return CreatedAtAction(nameof(GetCliente), new { id = cliente.Id }, clienteViewModel);
         }
         
 
-        
+        // Atualizar Cliente
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCliente(int id, Cliente cliente)
+        public async Task<IActionResult> PutCliente(int id, [FromBody] ClienteViewModel model)
         {
-            if (id != cliente.Id)
+            if (id != model.Id)
             {
                 return BadRequest();
             }
 
+            var cliente = await _context.Clientes.FindAsync(id);
+
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+
+            cliente.Name = model.Name;
+            cliente.Email = model.Email;
+            cliente.Logotipo = model.Logotipo ?? null;
             _context.Entry(cliente).State = EntityState.Modified;
+
             try
             {
                 await _context.SaveChangesAsync();
@@ -129,6 +137,7 @@ namespace Cadastro.Controllers
         }
 
         
+        //Apagar Cliente
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCliente(int id)
         {

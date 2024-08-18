@@ -22,15 +22,24 @@ namespace Cadastro.Controllers
         }
 
         
-        // Buscar todos os Enderecos
+        // Buscar todos os Endereços
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Endereco>>> GetEnderecos()
+        public async Task<ActionResult<IEnumerable<EnderecoViewModel>>> GetEnderecos()
         {
-            return await _context.Enderecos.ToListAsync();
+            var enderecos = await _context.Enderecos.ToListAsync();
+            var enderecosViewModel = enderecos.Select(e => new EnderecoViewModel
+            {
+                Id = e.Id,
+                Logradouro = e.Logradouro,
+                ClienteId = e.ClienteId
+            }).ToList();
+
+            return Ok(enderecosViewModel);
         }
 
+        // Buscar Endereços por Cliente
         [HttpGet("cliente/{clienteId}")]
-        public async Task<ActionResult<IEnumerable<Endereco>>> GetEnderecosPorCliente(int clienteId)
+        public async Task<ActionResult<IEnumerable<EnderecoViewModel>>> GetEnderecosPorCliente(int clienteId)
         {
             var enderecos = await _context.Enderecos
                 .Where(e => e.ClienteId == clienteId)
@@ -41,12 +50,20 @@ namespace Cadastro.Controllers
                 return NotFound();
             }
 
-            return Ok(enderecos);
+            var enderecosViewModel = enderecos.Select(e => new EnderecoViewModel
+            {
+                Id = e.Id,
+                Logradouro = e.Logradouro,
+                ClienteId = e.ClienteId
+            }).ToList();
+
+            return Ok(enderecosViewModel);
         }
 
 
+        // Buscar um Endereço por ID
         [HttpGet("{id}")]
-        public async Task<ActionResult<Endereco>> GetEndereco(int id)
+        public async Task<ActionResult<EnderecoViewModel>> GetEndereco(int id)
         {
             var endereco = await _context.Enderecos.FindAsync(id);
 
@@ -55,19 +72,17 @@ namespace Cadastro.Controllers
                 return NotFound();
             }
 
-            return endereco;
+            var enderecoViewModel = new EnderecoViewModel
+            {
+                Logradouro = endereco.Logradouro,
+                ClienteId = endereco.ClienteId
+            };
+
+            return Ok(enderecoViewModel);
         }
 
-        
-        /*[HttpPost]
-        public async Task<ActionResult<EnderecoViewModel>> PostEndereco(Endereco endereco)
-        {
-            _context.Enderecos.Add(endereco);
-            await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetEndereco), new { id = endereco.Id }, endereco);
-        }*/
-
+        // Criar um Novo Endereço
         [HttpPost]
         public async Task<ActionResult<EnderecoViewModel>> PostEndereco([FromBody] EnderecoViewModel model)
         {
@@ -85,9 +100,9 @@ namespace Cadastro.Controllers
             _context.Enderecos.Add(endereco);
             await _context.SaveChangesAsync();
 
-            // Crie uma nova instância de EnderecoViewModel para retorno
             var enderecoViewModel = new EnderecoViewModel
             {
+                Id = endereco.Id,  // Definido após a criação
                 Logradouro = endereco.Logradouro,
                 ClienteId = endereco.ClienteId
             };
@@ -96,15 +111,27 @@ namespace Cadastro.Controllers
         }
 
        
+        // Atualizar um Endereço
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEndereco(int id, Endereco endereco)
+        public async Task<IActionResult> PutEndereco(int id, [FromBody] EnderecoViewModel model)
         {
-            if (id != endereco.Id)
+            if (id != model.Id)
             {
                 return BadRequest();
             }
 
+            var endereco = await _context.Enderecos.FindAsync(id);
+
+            if (endereco == null)
+            {
+                return NotFound();
+            }
+
+            endereco.Logradouro = model.Logradouro;
+            endereco.ClienteId = model.ClienteId;
+
             _context.Entry(endereco).State = EntityState.Modified;
+
             try
             {
                 await _context.SaveChangesAsync();
@@ -125,6 +152,7 @@ namespace Cadastro.Controllers
         }
 
         
+         // Excluir um Endereço
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEndereco(int id)
         {
