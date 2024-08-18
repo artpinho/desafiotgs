@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Cadastro.Pages_Enderecos
 {
-    [Authorize]
+    
     public class IndexModel : PageModel
     {
         private readonly Cadastro.Data.ApplicationDbContext _context;

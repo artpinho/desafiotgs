@@ -1,6 +1,5 @@
 <h1>Cadastro de Clientes TGS</h1> 
 
-> Status do Projeto: :heavy_check_mark:
 
 ### Tópicos 
 
@@ -13,6 +12,10 @@
 :small_blue_diamond: [Pré-requisitos](#pré-requisitos)
 
 :small_blue_diamond: [Tecnologias implementadas](#tecnologias-implementadas)
+
+:small_blue_diamond: [Bibliotecas](#bibliotecas)
+
+:small_blue_diamond: [Segurança](#segurança)
 
 
 ## Descrição do projeto 
@@ -53,15 +56,15 @@ Caso for rodar o projeto localmente
   <li>:warning: .NET Core SDK 8.0</li>
   <li>:warning: SQL SERVER</li>
   <li>:warning: Visual Studio 2022 ou VS Code</li>
+   <li>:warning: Azure Data Studio</li>
   </ul>
 
 ## Como rodar a aplicação :arrow_forward:
 
 Abra um terminal e clone o projeto: 
 
-```
 git clone https://github.com/artpinho/desafiothomasgreg.git
-```
+
 
 <b>Rodar projeto localmente</b>
 <ul>
@@ -89,6 +92,7 @@ git clone https://github.com/artpinho/desafiothomasgreg.git
   <li>Execute dotnet run</li>
   <li>No navegador acesse http://localhost:5067</li>
   <li>Realize o login com os dados de acesso admin@desafio.com *Admin123*</li>
+  <li>Para acesso ao Swagger utilize http://localhost:5067/swagger/index.html ou https://localhost:7117/swagger/index.html</li>
 </ul>
 
 
@@ -108,8 +112,26 @@ git clone https://github.com/artpinho/desafiothomasgreg.git
 <li>Identity</li>
 <li>SQL Server</li>
 <li>Swagger UI</li>
-<li>Migrations</li>
+<li>JWT Token</li>
 </ul>
+
+## Segurança
+<ul>
+  <li>Tokens de autorização com JWT Bearer</li>
+</ul>
+
+## Bibliotecas
+
+<li>ASP.NET Core: Framework web usado para construir o backend da aplicação.</li>
+<li>Entity Framework Core: ORM (Object-Relational Mapper) usado para mapear objetos de domínio para o banco de dados.</li>
+<li>Microsoft.EntityFrameworkCore.SqlServer: Provedor de banco de dados SQL Server para o Entity Framework Core.</li>
+<li>Microsoft.EntityFrameworkCore.Design: Ferramentas para design e migração de banco de dados com Entity Framework Core.</li>
+<li>Microsoft.EntityFrameworkCore.Tools: Conjunto de ferramentas para desenvolvimento e migração de banco de dados com Entity Framework Core.</li>
+<li>Microsoft.VisualStudio.Web.CodeGeneration.Design: Biblioteca de geração de código para ASP.NET Core.</li>
+<li>Swashbuckle.AspNetCore (Swagger): Biblioteca para documentação e teste de APIs usando o Swagger.</li>
+<li>System.IdentityModel.Tokens.Jwt: Biblioteca para geração e validação de tokens JWT (JSON Web Tokens) no ASP.NET Core.</li>
+<li>Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore: Biblioteca para diagnósticos e manuseio de erros com Entity Framework Core no ASP.NET Core.</li>
+<li>Microsoft.AspNetCore.Identity.UI: Interface de usuário e funcionalidades para ASP.NET Core Identity.</li>
 
 ## Licença 
 

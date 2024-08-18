@@ -1,5 +1,7 @@
 using Cadastro.Data; 
 using Cadastro.Models;
+using Cadastro.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -21,11 +23,11 @@ namespace Cadastro.Controllers
 
         
         // Buscar todos os Enderecos
-        /*[HttpGet]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Endereco>>> GetEnderecos()
         {
             return await _context.Enderecos.ToListAsync();
-        }*/
+        }
 
         [HttpGet("cliente/{clienteId}")]
         public async Task<ActionResult<IEnumerable<Endereco>>> GetEnderecosPorCliente(int clienteId)
@@ -57,13 +59,40 @@ namespace Cadastro.Controllers
         }
 
         
-        [HttpPost]
-        public async Task<ActionResult<Endereco>> PostEndereco(Endereco endereco)
+        /*[HttpPost]
+        public async Task<ActionResult<EnderecoViewModel>> PostEndereco(Endereco endereco)
         {
             _context.Enderecos.Add(endereco);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetEndereco), new { id = endereco.Id }, endereco);
+        }*/
+
+        [HttpPost]
+        public async Task<ActionResult<EnderecoViewModel>> PostEndereco([FromBody] EnderecoViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var endereco = new Endereco
+            {
+                Logradouro = model.Logradouro,
+                ClienteId = model.ClienteId
+            };
+
+            _context.Enderecos.Add(endereco);
+            await _context.SaveChangesAsync();
+
+            // Crie uma nova instância de EnderecoViewModel para retorno
+            var enderecoViewModel = new EnderecoViewModel
+            {
+                Logradouro = endereco.Logradouro,
+                ClienteId = endereco.ClienteId
+            };
+
+            return CreatedAtAction(nameof(GetEndereco), new { id = endereco.Id }, enderecoViewModel);
         }
 
        

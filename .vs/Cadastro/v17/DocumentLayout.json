@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "F:\\Usu\u00E1rios\\Werner Pinho\\Desktop\\CadastroApp - SQLSERVER\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9EF1507F-41CE-474F-A4C1-2E47F776530C}|Cadastro\\Cadastro.csproj|f:\\usu\u00E1rios\\werner pinho\\desktop\\cadastroapp - sqlserver\\cadastro\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EF1507F-41CE-474F-A4C1-2E47F776530C}|Cadastro\\Cadastro.csproj|solutionrelative:cadastro\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9EF1507F-41CE-474F-A4C1-2E47F776530C}|Cadastro\\Cadastro.csproj|f:\\usu\u00E1rios\\werner pinho\\desktop\\cadastroapp - sqlserver\\cadastro\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9EF1507F-41CE-474F-A4C1-2E47F776530C}|Cadastro\\Cadastro.csproj|solutionrelative:cadastro\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "F:\\Usu\u00E1rios\\Werner Pinho\\Desktop\\CadastroApp - SQLSERVER\\Cadastro\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Cadastro\\Pages\\Shared\\_Layout.cshtml",
+              "ToolTip": "F:\\Usu\u00E1rios\\Werner Pinho\\Desktop\\CadastroApp - SQLSERVER\\Cadastro\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Cadastro\\Pages\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-18T02:12:43.984Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "F:\\Usu\u00E1rios\\Werner Pinho\\Desktop\\CadastroApp - SQLSERVER\\Cadastro\\Program.cs",
               "RelativeDocumentMoniker": "Cadastro\\Program.cs",
               "ToolTip": "F:\\Usu\u00E1rios\\Werner Pinho\\Desktop\\CadastroApp - SQLSERVER\\Cadastro\\Program.cs",
               "RelativeToolTip": "Cadastro\\Program.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACcAAAAmAAAA",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAACcAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-17T22:20:34.791Z",
               "EditorCaption": ""

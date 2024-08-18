@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Cadastro.Pages_Clientes
 
 {
-    [Authorize]
+   
     public class IndexModel : PageModel
     
     {
