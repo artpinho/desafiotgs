@@ -43,11 +43,11 @@
 
 ## Funcionalidades
 
-:heavy_check_mark: Cadastro de Clientes: É possível realizar cadastros de clientes, para cada cliente cadastrado ira gerar um usuario para manutenção dos dados
+:heavy_check_mark: Cadastro de Clientes: É possível realizar cadastros de clientes, para cada cliente cadastrado ira gerar um usuário para manutenção dos dados.
 
-:heavy_check_mark: Cadastro de Logradouros: É possível realizar cadastros de logradouros para um determinado cliente
+:heavy_check_mark: Cadastro de Logradouros: É possível realizar cadastros de logradouros para um determinado cliente.
 
-:heavy_check_mark: Autenticação: É possível se autenticar na API e alterar senha depois de autenticado
+:heavy_check_mark: Autenticação: É possível se autenticar na API e alterar senha depois de autenticado.
 
 ## Pré-requisitos
 
@@ -66,14 +66,7 @@ Abra um terminal e clone o projeto:
 git clone https://github.com/artpinho/desafiothomasgreg.git
 
 
-<b>Rodar projeto localmente</b>
-<ul>
-  <li>Vá até a pasta src\Clients\Presentantion\WebAPI abra o arquivo appsettings.json e altere os dados da string da conexão DefaultConnection com os dados de acesso ao SQL</li>
-  <li>Abra um terminal e navegue até a pasta src\Clients\Presentantion\WebAPI</li>
-  <li>Fazer restore do nuget executando o comando dotnet restore</li>
-  <li>Fazer a execucao do projeto com o comando dotnet run</li>
-  <li>Será feito a compilação da API, no final será exibido à URL para abrir a API, acesse a url em um browser passando no final da urm o link /swagger/index.html</li>
-</ul>
+<b>Configurar o banco de dados</b>
 <ul>
     <li>Abra o Azure Data Studio.</li>
     <li>No painel lateral esquerdo, clique em "Extensions" (Extensões).</li>
@@ -85,16 +78,23 @@ git clone https://github.com/artpinho/desafiothomasgreg.git
     <li>Especifique o arquivo DB_SistemaClientes.bacpac dentro da pasta do projeto.</li>
     <li>Configure as opções de importação, como o nome do banco de dados de destino.</li>
 </ul>
+<b>Configurar a conexão com o banco</b>
 <ul>
+  <li>Dentro do diretório do projeto vá até a pasta ..\Cadastro\abra o arquivo appsettings.json</li>
   <li>Configure a connectionString na sua IDE</li>
-  <li>Abra o arquivo appsettings.json e certifique-se de que a DefaultConnection está configurada. Ex: "Server=10.0.0.1,5555;Database=DB_Database;User ID=Usuario;Password=Senha;TrustServerCertificate=True"</li>
-  <li>Abra o terminal e vá até a raiz do projeto.</li>
-  <li>Execute dotnet run</li>
+  <li>Certifique-se de que a DefaultConnection está configurada. Ex: "Server=10.0.0.1,5555;Database=DB_Database;User ID=Usuario;Password=Senha;TrustServerCertificate=True"</li>
+</ul>
+
+<b>Rodar o projeto</b>
+<ul>
+  <li>Abra um terminal e navegue até a pasta ..\Cadastro\</li>
+  <li>Fazer restore do nugget executando o comando dotnet restore</li>
+  <li>Fazer a execução do projeto com o comando dotnet run</li>
+  <li>Será feito a compilação da API, no final será exibido à URL para abrir a API</li>
   <li>No navegador acesse http://localhost:5067</li>
   <li>Realize o login com os dados de acesso admin@desafio.com *Admin123*</li>
   <li>Para acesso ao Swagger utilize http://localhost:5067/swagger/index.html ou https://localhost:7117/swagger/index.html</li>
 </ul>
-
 
 ## Resumo
 <ul>
@@ -102,6 +102,7 @@ git clone https://github.com/artpinho/desafiothomasgreg.git
 <li>É necessário estar autenticado com usuário do sistema para acesso as páginas de cadastro de clientes e endereços</li>
 <li>Na página Clientes é possível visualizar os clientes cadastrados com informações como nome, Email, se possui logotipo e botões de ação rápido para adicionar, ver detalhes, alterar ou apagar cadastro.</li>
 <li>Na página de Endereços é possível visualizar a lista de endereços cadastrados com a informação de quem o endereço está associado. Ao adicionar um novo endereço é necessário informar qual cliente estará recebendo a informação, desta forma um cliente poderá ter vários endereços.</li>
+<li>Na página de gerenciamento da conta é possível alterar o e-mail e senha, adicionar um telefone, baixar suas informações pessoais, apagar a conta e habilitar autenticação em 2 fatores.</li>
 </ul>
 
 ## Tecnologias implementadas
