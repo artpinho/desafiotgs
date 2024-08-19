@@ -33,38 +33,39 @@
     <li><span>Nome</span></li>
     <li><span>e-mail</span></li>
     <li><span>Logotipo;</span></li>
-    <li><span>Logradouro, Um cliente pode conter vários logradouros</span></li>
-    <li><span>Um cliente não pode se registrar duas vezes com o mesmo endereço de e-mail</span></li>
-    <li><span>Deve ser possível criar, atualizar, visualizar e remover os logradouros</span></li>
-	<li><span>O acesso à API deve ser aberto ao mundo, porém deve possuir autenticação e autorização</span></li>
-	<li><span>A API terá um grande volume de requisições então tenha em mente que a preocupação com performance é algo que temos constantemente preocupação</span></li>
+    <li><span>Logradouro, Um cliente pode conter vários logradouros.</span></li>
+    <li><span>Um cliente não pode se registrar duas vezes com o mesmo endereço de e-mail.</span></li>
+    <li><span>Deve ser possível criar, atualizar, visualizar e remover os logradouros.</span></li>
+    <li><span>O acesso à API deve ser aberto ao mundo, porém deve possuir autenticação e autorização.</span></li>
+    <li><span>A API terá um grande volume de requisições então tenha em mente que a preocupação com performance é algo que temos constantemente preocupação.</span></li>
   </ul>
 </ul>
 
 ## Funcionalidades
 
-:heavy_check_mark: Cadastro de Clientes: É possível realizar cadastros de clientes, para cada cliente cadastrado ira gerar um usuário para manutenção dos dados.
+<li><span>Cadastro de Clientes: É possível realizar cadastros de clientes, para cada cliente cadastrado ira gerar um usuário para manutenção dos dados.</span></li>
 
-:heavy_check_mark: Cadastro de Logradouros: É possível realizar cadastros de logradouros para um determinado cliente.
+<li><span>Cadastro de Logradouros: É possível realizar cadastros de logradouros para um determinado cliente.</span></li>
 
-:heavy_check_mark: Autenticação: É possível se autenticar na API e alterar senha depois de autenticado.
+<li><span>Autenticação: É possível se autenticar na API e alterar senha depois de autenticado.</span></li>
 
 ## Pré-requisitos
 
 Caso for rodar o projeto localmente
 <ul>
-  <li>:warning: .NET Core SDK 8.0</li>
-  <li>:warning: SQL SERVER</li>
-  <li>:warning: Visual Studio 2022 ou VS Code</li>
-   <li>:warning: Azure Data Studio</li>
+  <li><span> .NET Core SDK 8.0</span>span></li>
+  <li><span> SQL SERVER</span>span></li>
+  <li><span> Visual Studio 2022 ou VS Code</span>span></li>
+  <li><span> Azure Data Studio</span>span></li>
   </ul>
 
 ## Como rodar a aplicação :arrow_forward:
 
-Abra um terminal e clone o projeto: 
-
-git clone https://github.com/artpinho/desafiothomasgreg.git
-
+<b>Baixando o projeto</b>
+<ul>
+  <li>Abra o terminal e vá até o diretório que gostaria de baixar o projeto</li>
+  <li>git clone https://github.com/artpinho/desafiothomasgreg.git</li>
+</ul>
 
 <b>Configurar o banco de dados</b>
 <ul>
@@ -80,7 +81,7 @@ git clone https://github.com/artpinho/desafiothomasgreg.git
 </ul>
 <b>Configurar a conexão com o banco</b>
 <ul>
-  <li>Dentro do diretório do projeto vá até a pasta ..\Cadastro\abra o arquivo appsettings.json</li>
+  <li>Dentro do diretório do projeto vá até a pasta ..\Cadastro\ abra o arquivo appsettings.json</li>
   <li>Configure a connectionString na sua IDE</li>
   <li>Certifique-se de que a DefaultConnection está configurada. Ex: "Server=10.0.0.1,5555;Database=DB_Database;User ID=Usuario;Password=Senha;TrustServerCertificate=True"</li>
 </ul>
